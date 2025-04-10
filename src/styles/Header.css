@@ -4,14 +4,28 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
 }
 
-.logo {
-  height: 40px;
+.logo-button {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
 }
+
+.logo-button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(1px 1px 5px rgb(0, 191, 255));
+}
+
+.logo {
+  height: 60px;
+  transition: transform 0.3s ease;
+}
+
 
 .search-container {
   position: relative;
@@ -27,46 +41,35 @@
   padding: 10px;
 }
 
+.berger-button:hover,
+.theme-toggle-button:hover,
+.back-button:hover {
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 2px rgba(0, 191, 255, 0.835));
+}
+
 .berger-icon {
   width: 24px;
   height: 24px;
-}
-
-
-.app-container.light .berger-icon {
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
-}
-
-
-.app-container.dark .berger-icon {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  filter: invert(0%);
 }
 
 .mode-icon {
   width: 24px;
   height: 24px;
-}
-
-.app-container.light .mode-icon {
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
-}
-
-.app-container.dark .mode-icon {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+  filter: invert(0%);
 }
 
 .close-icon {
   width: 24px;
   height: 24px;
+  filter: invert(0%);
 }
 
-
-.app-container.light .close-icon {
-  filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
-}
-
-.app-container.dark .close-icon {
-  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+.back-icon {
+  width: 24px;
+  height: 24px;
+  filter: invert(0%);
 }
 
 .search-bar {
@@ -87,21 +90,20 @@
 }
 
 .theme-toggle-button {
-  position: absolute;
-  right: 10px;
-  background-color: #FFD700;
+  background-color: transparent;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .back-button {
+  position: fixed;
+  right: 20px;
   background-color: transparent;
   border: none;
   cursor: pointer;

@@ -1,7 +1,7 @@
 
 // Importieren der Typen für die API-Antworten
 // Diese Typen definieren die Struktur der Daten, die von der API zurückgegeben werden
-import { PokemonListResponse, PokemonDetails, PokemonType } from '../types/pokemonTypes';
+import { PokemonListResponse, PokemonDetails, PokemonType } from '../types/PokemonTypes';
 
 // Funktion: fetchPokemonList
 // Zweck: Ruft eine Liste von Pokémon von der PokeAPI ab
