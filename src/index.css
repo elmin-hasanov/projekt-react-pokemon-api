@@ -28,3 +28,19 @@ html {
 img {
   max-width: 100%;
 }
+
+
+.menu{
+  background-color: #CCDADD;
+  padding: 5rem 10rem;
+}
+
+.menu .menu-logo{
+  height: 5rem;
+}
+
+.menu .type-btn-list{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 1rem;
+}
