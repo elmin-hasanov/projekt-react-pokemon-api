@@ -1,24 +1,33 @@
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { fetchPokemonList } from "../api/pokemonApi";
 import { PokemonListResponse } from "../types/pokemonTypes";
+import PokemonCard from "../components/PokemonCard";
 
 function HomePage() {
+    const [pokemonList, setPokemonList] = useState<PokemonListResponse | null>(
+        null
+    );
 
-    const [pokemonList, setPokemonList] = useState<PokemonListResponse | null>(null) 
+   
+    useEffect(() => {
+        fetchPokemonList().then((value) => {
+            setPokemonList(value);
+        });
+    }, []);
+    console.log("Liste: ", pokemonList);
 
-    useEffect(()=>{
-        fetchPokemonList().then((value)=>{
-            setPokemonList(value)
-        })
-    },[])
-console.log(pokemonList?.results)
+   
 
-  return (
-    {pokemonList.map((singlePokemon)=>{
-        <h1>{singlePokemon.name}</h1>
-    })
-    }
-  );
+   
+
+    return (
+        <div>
+            {pokemonList?.results.map((singlePokemon) => (
+                 <PokemonCard name={singlePokemon.name} url={singlePokemon.url}/>
+            ))
+               
+            }
+        </div>
+    );
 }
-
 export default HomePage;
