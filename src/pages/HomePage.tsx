@@ -14,7 +14,7 @@ function HomePage() {
             setPokemonList(value);
         });
     }, []);
-    console.log("Liste: ", pokemonList);
+    // console.log("Liste: ", pokemonList);
 
    
 
@@ -23,7 +23,7 @@ function HomePage() {
     return (
         <div>
             {pokemonList?.results.map((singlePokemon) => (
-                 <PokemonCard name={singlePokemon.name} url={singlePokemon.url}/>
+                 <PokemonCard key={singlePokemon.name} name={singlePokemon.name} url={singlePokemon.url}/>
             ))
                
             }
