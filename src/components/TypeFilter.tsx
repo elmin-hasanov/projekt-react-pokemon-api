@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { fetchPokemonTypes } from '../api/pokemonApi';
-import { PokemonType } from '../types/pokemonTypes';
-import '../styles/TypeFilter.css';
 
+function TypeFilter() {
+  return (
+    <div>
+      
+    </div>
+  )
+}
 
-export default TypeFilter;
+export default TypeFilter

@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { PokemonDetails } from "../types/pokemonTypes";
 import { fetchPokemonDetails } from "../api/pokemonApi";
-import PokemonDetails from "./PokemonDetails";
+
 
 type PokemonCardProps = {
     name: string;
     url: string;
 };
 
-function PokemonCard({ name, url }: PokemonCardProps) {
+function PokemonCard({ name }: PokemonCardProps) {
     const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails | null>(
         null
     );
