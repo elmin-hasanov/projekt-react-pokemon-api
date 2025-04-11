@@ -5,24 +5,15 @@ import SwitchMode from '../assets/img/switch-mode.svg';
 
 import '../components/Header.css';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { fetchPokemonDetails } from '../api/pokemonApi';
-import { PokemonDetails } from '../types/pokemonTypes';
+
 
 type HeaderProps = {
   input: string;
   setInput: (input: string) => void;
 };
 
-export default function Header({ input }: HeaderProps) {
-  const [input, setInput] = useState<PokemonDetails | null>(null);
-  // const [name, setName] = useState('');
-
-  useEffect(() => {
-    fetchPokemonDetails().then((input) => {
-      setInput(input);
-    });
-  }, []);
+export default function Header({ input, setInput }: HeaderProps) {
+  
 
   console.log(input);
 
@@ -46,9 +37,11 @@ export default function Header({ input }: HeaderProps) {
           </div>
         </Link>
 
-        <div>
-          <input onChange={(e) => setInput(e.target.value)} type="text" />
-        </div>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          type="text"
+        />
         <div>
           <img src={SwitchMode} alt="" />
         </div>
