@@ -9,12 +9,27 @@ function DetailPage() {
   const { name } = useParams();
   const [pokemon, setPokemon] = useState<PokemonDetails | null>(null);
   const [searchInput, setSearchInput] = useState('');
+  const [audio, setAudio] = useState<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     if (name) {
       fetchPokemonDetails(name).then((data) => setPokemon(data));
     }
   }, [name]);
+
+  useEffect(() => {
+    if (pokemon) {
+      const cryUrl = `https://play.pokemonshowdown.com/audio/cries/${pokemon.name.toLowerCase()}.mp3`;
+      setAudio(new Audio(cryUrl));
+    }
+  }, [pokemon]);
+
+  const handleImageClick = () => {
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
+    }
+  };
 
   if (!pokemon) return <div>Loading...</div>;
 
@@ -23,10 +38,18 @@ function DetailPage() {
       <div>
         <Header input={searchInput} setInput={setSearchInput} />
       </div>
+      <div className="pokemon-sound">
+        <p>Click image to play sound</p>
+      </div>
 
       <div className="pokemon-card-detail">
         <div className="pokemon-image">
-          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+          <img
+            src={pokemon.sprites.front_default}
+            alt={pokemon.name}
+            onClick={handleImageClick}
+            style={{ cursor: 'pointer' }}
+          />
         </div>
 
         <div>

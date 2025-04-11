@@ -29,7 +29,7 @@
   background: linear-gradient(52deg, #ffe1c6 4.87%, #ffcb05 94.37%);
   height: 16vh;
   position: relative;
-  margin: 20vw 15vw 0vw 15vw;
+  margin: 10vw 15vw 0vw 15vw;
   img {
     height: 30vh;
     object-fit: contain;
@@ -47,4 +47,16 @@
   text-align: center;
   font-family: var(--font-extra-bold);
   font-size: 5rem;
+}
+
+.pokemon-sound {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  gap: 1rem;
+  color: #000000;
+  text-align: center;
+  font-family: var(--font-extra-bold);
+  font-size: 2rem;
 }
