@@ -35,7 +35,9 @@ function MenuPage() {
         ))}
         <p>Ich bin die ausgewählte Value:{value}</p>
       </div>
-      <button>SEARCH</button>
+      <Link to={`/?type=${value}`}>
+        <button disabled={!value}>SEARCH</button>
+      </Link>
     </article>
   );
 }

@@ -1,18 +1,14 @@
 @font-face {
-  font-family: 'Roboto';
-  src: url('/public/Roboto/Roboto-VariableFont_wdth,wght.ttf')
-    format('truetype');
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
+  font-family: 'Roboto-ExtraBold';
+  src: url('/Roboto/static/Roboto-ExtraBold.ttf');
 }
 
 :root {
-  --font-roboto-slab: 'Roboto', serif;
+  --font-roboto: 'Roboto';
+  --font-extra-bold: 'Roboto-ExtraBold';
 }
 
 body {
-  font-family: var(--font-roboto-slab);
   background-color: #ccdadd;
 }
 
