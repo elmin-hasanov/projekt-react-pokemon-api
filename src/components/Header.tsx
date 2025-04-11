@@ -1,11 +1,10 @@
+import { Link, useLocation } from 'react-router-dom';
 import Logimg from '../assets/img/logo.png';
 import HamburgerMenu from '../assets/img/hamburger.svg';
 import HamburgerMenuBack from '../assets/img/back.svg';
 import SwitchMode from '../assets/img/switch-mode.svg';
 
 import '../components/Header.css';
-import { Link } from 'react-router-dom';
-
 
 type HeaderProps = {
   input: string;
@@ -13,29 +12,35 @@ type HeaderProps = {
 };
 
 export default function Header({ input, setInput }: HeaderProps) {
-  
+  const location = useLocation();
 
-  console.log(input);
+  const isHomePage = location.pathname === '/';
+  const isDetailPage = location.pathname.startsWith('/pokemon');
 
   return (
     <header>
       <Link to="/">
         <div className="logo">
-          <img src={Logimg} alt="" />
+          <img src={Logimg} alt="Logo" />
         </div>
       </Link>
 
       <div className="search-bar">
-        <Link to="/menu">
-          <div className="hamburger">
-            <img src={HamburgerMenu} alt="" />
-          </div>
-        </Link>
-        <Link to="/">
-          <div className="hamburger-close">
-            <img src={HamburgerMenuBack} alt="" />
-          </div>
-        </Link>
+        {isHomePage && (
+          <Link to="/menu">
+            <div className="hamburger">
+              <img src={HamburgerMenu} alt="Hamburger Menu" />
+            </div>
+          </Link>
+        )}
+
+        {isDetailPage && (
+          <Link to="/">
+            <div className="hamburger-close">
+              <img src={HamburgerMenuBack} alt="Hamburger Close" />
+            </div>
+          </Link>
+        )}
 
         <input
           value={input}
@@ -43,7 +48,7 @@ export default function Header({ input, setInput }: HeaderProps) {
           type="text"
         />
         <div>
-          <img src={SwitchMode} alt="" />
+          <img src={SwitchMode} alt="Switch Mode" />
         </div>
       </div>
     </header>

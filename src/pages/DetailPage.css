@@ -34,7 +34,6 @@
     height: 30vh;
     object-fit: contain;
     image-rendering: pixelated;
-    animation: rotate 20s linear infinite;
   }
 }
 
@@ -48,13 +47,4 @@
   text-align: center;
   font-family: var(--font-extra-bold);
   font-size: 5rem;
-}
-
-@keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }
