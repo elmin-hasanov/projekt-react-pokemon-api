@@ -1,0 +1,151 @@
+.details-container {
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.details-container.light {
+  background: linear-gradient(180deg, #ffd700, #ffa500);
+}
+
+.details-container.dark {
+  background: linear-gradient(180deg, #555, #444);
+}
+
+.pokemon-image {
+  width: 80%;
+  height: 80%;
+  filter: drop-shadow(2px 2px 15px rgba(0, 0, 255, 0.656));
+  transition: 0.3s ease-in-out;
+}
+
+.pokemon-image:hover {
+  transform: scale(1.1) rotateZ(-5deg);
+}
+
+.image-placeholder {
+  width: 80%;
+  height: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eee;
+  color: #999;
+  font-size: 1rem;
+}
+
+.pokemon-number {
+  margin: 10px 0;
+  font-size: 2rem;
+  color: #1e90ff;
+  text-shadow: 1px 1px 1px yellow;
+}
+
+.pokemon-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.type-container {
+  margin: 10px 0;
+}
+
+.type-button {
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin: 5px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.type-button.grass {
+  background-color: #78c850;
+}
+
+.type-button.poison {
+  background-color: #a040a0;
+}
+
+.type-button.water {
+  background-color: #6890f0;
+}
+
+.type-button.fire {
+  background-color: #f08030;
+}
+
+.type-button.bug {
+  background-color: #a8b820;
+}
+
+.type-button.dark {
+  background-color: #705848;
+}
+
+.type-button.dragon {
+  background-color: #7038f8;
+}
+
+.type-button.electric {
+  background-color: #f8d030;
+}
+
+.type-button.fairy {
+  background-color: #ee99ac;
+}
+
+.type-button.fighting {
+  background-color: #c03028;
+}
+
+.type-button.flying {
+  background-color: #a890f0;
+}
+
+.type-button.ghost {
+  background-color: #705898;
+}
+
+.type-button.ground {
+  background-color: #e0c068;
+}
+
+.type-button.ice {
+  background-color: #98d8d8;
+}
+
+.type-button.normal {
+  background-color: #a8a878;
+}
+
+.type-button.psychic {
+  background-color: #f85888;
+}
+
+.type-button.rock {
+  background-color: #b8a038;
+}
+
+.type-button.steel {
+  background-color: #b8b8d0;
+}
+
+.type-button.default {
+  background-color: #ccc;
+}
+
+.physical-stats {
+  margin: 20px 0;
+}
+
+.physical-stats p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}

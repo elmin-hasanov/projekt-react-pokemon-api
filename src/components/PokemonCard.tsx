@@ -1,48 +1,42 @@
-import { useEffect, useState } from 'react';
-import { PokemonDetails } from '../types/pokemonTypes';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { fetchPokemonDetails } from '../api/pokemonApi';
+import { PokemonDetails } from '../types/pokemonTypes';
+import { useTheme } from '../context/ThemeContext';
+import '../styles/App.css';
 
-import './PokemonCard.css';
-
-type PokemonCardProps = {
+interface PokemonCardProps {
   name: string;
   url: string;
-};
+}
 
-function PokemonCard({ name }: PokemonCardProps) {
-  const [pokemonDetails, setPokemonDetails] = useState<PokemonDetails | null>(
-    null
-  );
-  const [isHovered, setIsHovered] = useState(false);
+const PokemonCard = ({ name, url }: PokemonCardProps) => {
+  const [pokemon, setPokemon] = useState<PokemonDetails | null>(null);
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
-    fetchPokemonDetails(name).then((value) => {
-      setPokemonDetails(value);
+    fetchPokemonDetails(name).then((data) => {
+      setPokemon(data);
     });
   }, [name]);
 
-  const imageUrl = isHovered
-    ? pokemonDetails?.sprites.back_default
-    : pokemonDetails?.sprites.front_default;
-
   return (
-    <div
-      className="pokemon-card"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="pokemon-image">
-        <img src={imageUrl} alt={name} />
+    <Link to={`/pokemon/${name}`}>
+      <div className={`pokemon-card ${isDarkMode ? 'dark' : 'light'}`}>
+        {pokemon?.sprites.other?.['official-artwork']?.front_default ? (
+          <img
+            src={pokemon.sprites.other['official-artwork'].front_default}
+            alt={name}
+            className="pokemon-list-image"
+          />
+        ) : (
+          <div className="image-placeholder">No Image</div>
+        )}
+        <p className="number">#{pokemon?.id.toString().padStart(3, '0')}</p>
+        <p className="name">{name.charAt(0).toUpperCase() + name.slice(1)}</p>
       </div>
-
-      <div className="pokemon-info">
-        <div>
-          <p>#{String(pokemonDetails?.id).padStart(3, '0')}</p>
-        </div>
-        <div>{name.charAt(0).toUpperCase() + name.slice(1)}</div>
-      </div>
-    </div>
+    </Link>
   );
-}
+};
 
 export default PokemonCard;

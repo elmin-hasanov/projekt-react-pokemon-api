@@ -1,18 +1,14 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import MenuPage from './pages/MenuPage';
-import DetailPage from './pages/DetailPage';
+import React from 'react';
+import { ThemeProvider } from './context/ThemeContext';
+import Router from './Router';
+import './styles/App.css';
 
-const Router = () => {
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/pokemon/:name" element={<DetailPage />} />
-      </Routes>
-    </BrowserRouter>
+    <ThemeProvider>
+      <Router />
+    </ThemeProvider>
   );
-};
+}
 
-export default Router;
+export default App;

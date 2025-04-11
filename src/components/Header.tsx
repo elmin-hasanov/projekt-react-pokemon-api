@@ -1,4 +1,5 @@
-import React from 'react';
+import { Link } from 'react-router-dom';
+import { useTheme } from '../context/ThemeContext';
 import logo from '../assets/img/logo.png';
 import Vector from '../assets/img/Vector.svg';
 import ModeIcon from '../assets/img/mode.svg';
@@ -10,38 +11,33 @@ interface HeaderProps {
   setSearchTerm: (term: string) => void;
   setShowTypeFilter: (show: boolean) => void;
   showTypeFilter: boolean;
-  selectedPokemon: string | null;
-  handleBackToHome: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({
+const Header = ({
   searchTerm,
   setSearchTerm,
   setShowTypeFilter,
   showTypeFilter,
-  selectedPokemon,
-  handleBackToHome,
-}) => {
-  const toggleTheme = () => {
-    const body = document.body;
-    body.classList.toggle('dark-mode');
-  };
+}: HeaderProps) => {
+  const { isDarkMode, toggleTheme } = useTheme();
 
   return (
-    <div className="header-container">
+    <div className={`header-container ${isDarkMode ? 'dark-mode' : ''}`}>
       <header className="header">
-        <img src={logo} alt="Pokémon Logo" className="logo" />
-        {(showTypeFilter || selectedPokemon) && (
-          <button className="back-button" onClick={handleBackToHome}>
-            {showTypeFilter ? (
-              <img src={CloseIcon} alt="Close" className="close-icon" />
-            ) : (
-              '◀︎'
-            )}
+        <Link to="/">
+          <button className="logo-button">
+            <img src={logo} alt="Pokémon Logo" className="logo logo-animated" />
+          </button>
+        </Link>
+        {showTypeFilter && (
+          <button
+            className="back-button"
+            onClick={() => setShowTypeFilter(false)}
+          >
+            <img src={CloseIcon} alt="Close" className="close-icon" />
           </button>
         )}
       </header>
-
       <div className="search-container">
         <button
           className="berger-button"
@@ -49,7 +45,6 @@ const Header: React.FC<HeaderProps> = ({
         >
           <img src={Vector} alt="Menu" className="berger-icon" />
         </button>
-
         <input
           type="text"
           className="search-bar"
@@ -57,8 +52,7 @@ const Header: React.FC<HeaderProps> = ({
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-
-        {!(showTypeFilter || selectedPokemon) && (
+        {!showTypeFilter && (
           <button className="theme-toggle-button" onClick={toggleTheme}>
             <img src={ModeIcon} alt="Toggle Theme" className="mode-icon" />
           </button>

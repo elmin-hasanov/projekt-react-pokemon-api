@@ -1,46 +1,26 @@
-import PokemonLogo from "../assets/img/logo.png";
-import CloseImg from "../assets/img/close.svg";
-import { Link } from "react-router-dom";
-import { fetchPokemonTypes } from "../api/pokemonApi";
-import { useEffect, useState } from "react";
-import { PokemonType } from "../types/pokemonTypes";
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import TypeFilter from '../components/TypeFilter';
+import PokemonLogo from '../assets/img/logo.png';
+import CloseImg from '../assets/img/close.svg';
+import '../styles/TypeFilter.css';
 
 function MenuPage() {
-  const [pokemonTypes, setPokemonTypes] = useState<PokemonType[]>([]);
+  const handleTypeSearch = (types: string[]) => {
+    console.log('Selected types:', types);
+  };
 
-  const [value, clickedValue] = useState("")
-  
-
-useEffect(() => {
-  fetchPokemonTypes().then((value) => {
-        setPokemonTypes(value.results);
-    });
-}, []);
-
-// console.log(pokemonTypes)
-
-
-    return (
-        <article className="menu">
-            <div>
-                <img className="menu-logo" src={PokemonLogo} alt="Pokemon Logo" />
-                <Link to="/">
-                    <img src={CloseImg} alt="Close Icon" />
-                </Link>
-            </div>
-            <h2>Type</h2>
-            <div className="type-btn-list">
-              {
-                pokemonTypes.map((singleType)=>(
-                  <button key={singleType.name} onClick={()=>clickedValue(singleType.name)}>{singleType.name}</button>
-                ))
-              }
-              <p>Ich bin die ausgewählte Value:{value}</p>
-            </div>
-            <button>SEARCH</button>
-        </article>
-    );
+  return (
+    <article className="type-filter">
+      <div>
+        <img className="menu-logo" src={PokemonLogo} alt="Pokémon Logo" />
+        <Link to="/">
+          <img src={CloseImg} alt="Close Icon" />
+        </Link>
+      </div>
+      <TypeFilter onSearch={handleTypeSearch} />
+    </article>
+  );
 }
 
 export default MenuPage;

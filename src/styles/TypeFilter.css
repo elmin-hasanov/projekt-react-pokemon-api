@@ -1,0 +1,127 @@
+.type-filter {
+  text-align: center;
+}
+
+.type-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.type-title {
+  font-size: 1.5rem;
+  color: #1e90ff;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.type-button {
+  color: white;
+  min-height: 30px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.type-button.active {
+  border: 3px solid #ffd700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+  transform: scale(1.1);
+  font-weight: bold;
+}
+
+.type-button.bug {
+  background-color: #a8b820;
+}
+
+.type-button.dark {
+  background-color: #705848;
+}
+
+.type-button.dragon {
+  background-color: #7038f8;
+}
+
+.type-button.electric {
+  background-color: #f8d030;
+}
+
+.type-button.fairy {
+  background-color: #ee99ac;
+}
+
+.type-button.fighting {
+  background-color: #c03028;
+}
+
+.type-button.fire {
+  background-color: #f08030;
+}
+
+.type-button.flying {
+  background-color: #a890f0;
+}
+
+.type-button.ghost {
+  background-color: #705898;
+}
+
+.type-button.grass {
+  background-color: #78c850;
+}
+
+.type-button.ground {
+  background-color: #e0c068;
+}
+
+.type-button.ice {
+  background-color: #98d8d8;
+}
+
+.type-button.normal {
+  background-color: #a8a878;
+}
+
+.type-button.poison {
+  background-color: #a040a0;
+}
+
+.type-button.psychic {
+  background-color: #f85888;
+}
+
+.type-button.rock {
+  background-color: #b8a038;
+}
+
+.type-button.steel {
+  background-color: #b8b8d0;
+}
+
+.type-button.water {
+  background-color: #6890f0;
+}
+
+.type-button.default {
+  background-color: #ccc;
+}
+
+.search-button {
+  background-color: #ffd700;
+  color: #1e90ff;
+  border: 2px solid #1e90ff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin-top: 20px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.menu-logo {
+  height: 60px;
+}
