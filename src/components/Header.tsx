@@ -1,71 +1,58 @@
-import React from 'react';
-import logo from '../assets/img/logo.png';
-import Vector from '../assets/img/Vector.svg';
-import ModeIcon from '../assets/img/mode.svg';
-import CloseIcon from '../assets/img/close.svg';
-import '../styles/Header.css';
+import Logimg from '../assets/img/logo.png';
+import HamburgerMenu from '../assets/img/hamburger.svg';
+import HamburgerMenuBack from '../assets/img/back.svg';
+import SwitchMode from '../assets/img/switch-mode.svg';
 
-interface HeaderProps {
-  searchTerm: string;
-  setSearchTerm: (term: string) => void;
-  setShowTypeFilter: (show: boolean) => void;
-  showTypeFilter: boolean;
-  selectedPokemon: string | null;
-  handleBackToHome: () => void;
-}
+import '../components/Header.css';
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { fetchPokemonDetails } from '../api/pokemonApi';
+import { PokemonDetails } from '../types/pokemonTypes';
 
-const Header: React.FC<HeaderProps> = ({
-  searchTerm,
-  setSearchTerm,
-  setShowTypeFilter,
-  showTypeFilter,
-  selectedPokemon,
-  handleBackToHome,
-}) => {
-  const toggleTheme = () => {
-    const body = document.body;
-    body.classList.toggle('dark-mode');
-  };
-
-  return (
-    <div className="header-container">
-      <header className="header">
-        <img src={logo} alt="Pokémon Logo" className="logo" />
-        {(showTypeFilter || selectedPokemon) && (
-          <button className="back-button" onClick={handleBackToHome}>
-            {showTypeFilter ? (
-              <img src={CloseIcon} alt="Close" className="close-icon" />
-            ) : (
-              '◀︎'
-            )}
-          </button>
-        )}
-      </header>
-
-      <div className="search-container">
-        <button
-          className="berger-button"
-          onClick={() => setShowTypeFilter(true)}
-        >
-          <img src={Vector} alt="Menu" className="berger-icon" />
-        </button>
-
-        <input
-          type="text"
-          className="search-bar"
-          placeholder="Search Pokémon"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
-
-        {!(showTypeFilter || selectedPokemon) && (
-          <button className="theme-toggle-button" onClick={toggleTheme}>
-            <img src={ModeIcon} alt="Toggle Theme" className="mode-icon" />
-          </button>
-        )}
-      </div>
-    </div>
-  );
+type HeaderProps = {
+  input: string;
+  setInput: (input: string) => void;
 };
 
-export default Header;
+export default function Header({ input }: HeaderProps) {
+  const [input, setInput] = useState<PokemonDetails | null>(null);
+  // const [name, setName] = useState('');
+
+  useEffect(() => {
+    fetchPokemonDetails().then((input) => {
+      setInput(input);
+    });
+  }, []);
+
+  console.log(input);
+
+  return (
+    <header>
+      <Link to="/">
+        <div className="logo">
+          <img src={Logimg} alt="" />
+        </div>
+      </Link>
+
+      <div className="search-bar">
+        <Link to="/menu">
+          <div className="hamburger">
+            <img src={HamburgerMenu} alt="" />
+          </div>
+        </Link>
+        <Link to="/">
+          <div className="hamburger-close">
+            <img src={HamburgerMenuBack} alt="" />
+          </div>
+        </Link>
+
+        <div>
+          <input onChange={(e) => setInput(e.target.value)} type="text" />
+        </div>
+        <div>
+          <img src={SwitchMode} alt="" />
+        </div>
+      </div>
+    </header>
+  );
+}

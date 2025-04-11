@@ -1,0 +1,16 @@
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+  img {
+    width: 70vw;
+  }
+}
+
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}

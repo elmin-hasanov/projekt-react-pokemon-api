@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchPokemonDetails } from '../api/pokemonApi';
 import { PokemonDetails } from '../types/pokemonTypes';
+import Header from '../components/Header';
 
 function DetailPage() {
   const { name } = useParams();
@@ -16,10 +17,15 @@ function DetailPage() {
   if (!pokemon) return <div>Loading...</div>;
 
   return (
-    <div className="detail-page">
-      <h1>{pokemon.name}</h1>
-      <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-    </div>
+    <>
+      <div>
+        <Header />
+      </div>
+      <div className="detail-page">
+        <h1>{pokemon.name}</h1>
+        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+      </div>
+    </>
   );
 }
 

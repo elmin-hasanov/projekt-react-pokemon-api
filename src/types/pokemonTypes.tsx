@@ -13,7 +13,6 @@ export interface Sprites {
   other?: {
     'official-artwork'?: {
       front_default?: string;
-      front_shiny?: string;
       back_default?: string;
     };
   };
