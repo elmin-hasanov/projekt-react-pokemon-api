@@ -3,6 +3,11 @@
   src: url('/Roboto/static/Roboto-ExtraBold.ttf');
 }
 
+@font-face {
+  font-family: 'Roboto';
+  src: url('/Roboto/static/Roboto-Regular.ttf');
+}
+
 :root {
   --font-roboto: 'Roboto';
   --font-extra-bold: 'Roboto-ExtraBold';
@@ -10,6 +15,7 @@
 
 body {
   background-color: #ccdadd;
+  font-family: var(--font-roboto);
 }
 
 * {

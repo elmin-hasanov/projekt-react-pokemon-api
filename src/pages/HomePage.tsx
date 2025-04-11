@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
-import { fetchPokemonList } from '../api/pokemonApi';
 import { PokemonListResponse } from '../types/pokemonTypes';
 import PokemonCard from '../components/PokemonCard';
 import './HomePage.css';
 import { Link } from 'react-router-dom';
 import Header from '../components/Header';
+import { useSearchParams } from 'react-router-dom';
+import { fetchPokemonByType, fetchPokemonList } from '../api/pokemonApi';
 
 function HomePage() {
   const [pokemonList, setPokemonList] = useState<PokemonListResponse | null>(
@@ -12,11 +13,22 @@ function HomePage() {
   );
   const [searchInput, setSearchInput] = useState('');
 
+  const [searchParams] = useSearchParams();
+  const selectedType = searchParams.get('type');
+
   useEffect(() => {
-    fetchPokemonList().then((value) => {
-      setPokemonList(value);
-    });
-  }, []);
+    if (selectedType) {
+      fetchPokemonByType(selectedType).then((data) => {
+        setPokemonList({
+          results: data.pokemon.map((p: any) => p.pokemon),
+        });
+      });
+    } else {
+      fetchPokemonList().then((value) => {
+        setPokemonList(value);
+      });
+    }
+  }, [selectedType]);
 
   return (
     <>

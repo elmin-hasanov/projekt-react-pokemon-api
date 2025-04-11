@@ -23,13 +23,28 @@ function DetailPage() {
       <div>
         <Header input={searchInput} setInput={setSearchInput} />
       </div>
-      <div className="detail-page">
-        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-        <h1></h1>
 
-        <div className="pokemon-name">
-          <p>#{String(pokemon.id).padStart(3, '0')}</p>
-          <p>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</p>
+      <div className="pokemon-card-detail">
+        <div className="pokemon-image">
+          <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+        </div>
+
+        <div>
+          <div className="pokemon-name">
+            <p>#{String(pokemon.id).padStart(3, '0')}</p>
+            <p>
+              {pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}
+            </p>
+          </div>
+
+          <div className="pokemon-type-list">
+            {pokemon.types.map((type) => (
+              <p key={type.type.name}>
+                {type.type.name.charAt(0).toUpperCase() +
+                  type.type.name.slice(1)}
+              </p>
+            ))}
+          </div>
         </div>
       </div>
     </>
