@@ -32,7 +32,7 @@ html {
   font-size: 10px;
 }
 
-.menu {
+/* .menu {
   background-color: #ccdadd;
   padding: 5rem 10rem;
 }
@@ -45,4 +45,4 @@ html {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-}
+} */
