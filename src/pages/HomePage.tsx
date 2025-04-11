@@ -7,6 +7,11 @@ import Header from '../components/Header';
 import { useSearchParams } from 'react-router-dom';
 import { fetchPokemonByType, fetchPokemonList } from '../api/pokemonApi';
 
+interface Pokemon {
+  name: string;
+  url: string;
+}
+
 function HomePage() {
   const [pokemonList, setPokemonList] = useState<PokemonListResponse | null>(
     null
@@ -20,7 +25,7 @@ function HomePage() {
     if (selectedType) {
       fetchPokemonByType(selectedType).then((data) => {
         setPokemonList({
-          results: data.pokemon.map((p: any) => p.pokemon),
+          results: data.pokemon.map((p: { pokemon: Pokemon }) => p.pokemon),
         });
       });
     } else {
