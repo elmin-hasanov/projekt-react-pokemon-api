@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Roboto';
-  src: url('/public/Roboto/Roboto-VariableFont_wdth\,wght.ttf')
+  src: url('/public/Roboto/Roboto-VariableFont_wdth,wght.ttf')
     format('truetype');
   font-weight: 100 900;
   font-style: normal;
@@ -13,6 +13,7 @@
 
 body {
   font-family: var(--font-roboto-slab);
+  background-color: #ccdadd;
 }
 
 * {
@@ -21,26 +22,25 @@ body {
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 html {
   font-size: 10px;
 }
 
-img {
-  max-width: 100%;
-}
-
-
-.menu{
-  background-color: #CCDADD;
+.menu {
+  background-color: #ccdadd;
   padding: 5rem 10rem;
 }
 
-.menu .menu-logo{
+.menu .menu-logo {
   height: 5rem;
 }
 
-.menu .type-btn-list{
+.menu .type-btn-list {
   display: grid;
-  grid-template-columns: repeat(2,1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
 }

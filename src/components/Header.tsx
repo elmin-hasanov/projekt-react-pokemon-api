@@ -1,9 +1,8 @@
 import React from 'react';
-import { useTheme } from '../context/ThemeContext';
 import logo from '../assets/img/logo.png';
 import Vector from '../assets/img/Vector.svg';
 import ModeIcon from '../assets/img/mode.svg';
-import CloseIcon from '../assets/img/close.svg'; 
+import CloseIcon from '../assets/img/close.svg';
 import '../styles/Header.css';
 
 interface HeaderProps {
@@ -23,7 +22,10 @@ const Header: React.FC<HeaderProps> = ({
   selectedPokemon,
   handleBackToHome,
 }) => {
-  const { isDarkMode, toggleTheme } = useTheme();
+  const toggleTheme = () => {
+    const body = document.body;
+    body.classList.toggle('dark-mode');
+  };
 
   return (
     <div className="header-container">
@@ -39,6 +41,7 @@ const Header: React.FC<HeaderProps> = ({
           </button>
         )}
       </header>
+
       <div className="search-container">
         <button
           className="berger-button"
@@ -46,6 +49,7 @@ const Header: React.FC<HeaderProps> = ({
         >
           <img src={Vector} alt="Menu" className="berger-icon" />
         </button>
+
         <input
           type="text"
           className="search-bar"
@@ -53,6 +57,7 @@ const Header: React.FC<HeaderProps> = ({
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
+
         {!(showTypeFilter || selectedPokemon) && (
           <button className="theme-toggle-button" onClick={toggleTheme}>
             <img src={ModeIcon} alt="Toggle Theme" className="mode-icon" />
